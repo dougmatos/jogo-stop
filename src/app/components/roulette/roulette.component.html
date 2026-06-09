@@ -1,0 +1,21 @@
+<!-- src/app/components/roulette/roulette.component.html -->
+<div class="drum-wrapper">
+  <div class="drum-window">
+    <!-- Gradient fade top and bottom -->
+    <div class="fade-overlay"></div>
+
+    <!-- Selection line markers at center slot edges -->
+    <div class="center-line top"></div>
+    <div class="center-line bottom"></div>
+
+    <!-- Glow overlay — animated via Web Animations API on stop -->
+    <div class="center-glow"></div>
+
+    <!-- Animated drum strip -->
+    <div class="drum" #drum>
+      @for (letter of displayLetters; track $index) {
+        <div class="drum-slot">{{ letter }}</div>
+      }
+    </div>
+  </div>
+</div>
