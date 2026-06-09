@@ -1,0 +1,7 @@
+<div class="grid">
+  @for (item of letters(); track item.letter) {
+    <div class="letter-cell" [class.drawn]="item.drawn">
+      {{ item.letter }}
+    </div>
+  }
+</div>
