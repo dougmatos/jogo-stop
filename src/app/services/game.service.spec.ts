@@ -109,4 +109,33 @@ describe('GameService', () => {
     tick(1500); // timer should be cleared, no error
     expect(service.phase()).toBe('idle');
   }));
+
+  it('setRemoveWyk should remove W, Y and K from available letters', () => {
+    service.setRemoveWyk(true);
+
+    expect(service.availableLetters()).not.toContain('W');
+    expect(service.availableLetters()).not.toContain('Y');
+    expect(service.availableLetters()).not.toContain('K');
+  });
+
+  it('setRemoveWyk should restore undrawn W, Y and K when disabled', () => {
+    service.setRemoveWyk(true);
+    service.setRemoveWyk(false);
+
+    expect(service.availableLetters()).toContain('W');
+    expect(service.availableLetters()).toContain('Y');
+    expect(service.availableLetters()).toContain('K');
+  });
+
+  it('setRemoveWyk should keep previously drawn W, Y or K unavailable when disabled', () => {
+    spyOn(Math, 'random').and.returnValue(0.85); // selects W from full alphabet
+
+    service.drawLetter();
+    service.onAnimationComplete();
+    service.setRemoveWyk(true);
+    service.setRemoveWyk(false);
+
+    expect(service.drawnLetters()).toContain('W');
+    expect(service.availableLetters()).not.toContain('W');
+  });
 });

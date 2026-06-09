@@ -11,12 +11,14 @@ const ALL_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 })
 export class AlphabetGridComponent {
   drawnLetters = input<string[]>([]);
+  removedLetters = input<string[]>([]);
 
   letters = computed(() => {
     const drawnSet = new Set(this.drawnLetters());
+    const removedSet = new Set(this.removedLetters());
     return ALL_LETTERS.map(letter => ({
       letter,
-      drawn: drawnSet.has(letter)
+      drawn: drawnSet.has(letter) || removedSet.has(letter)
     }));
   });
 }

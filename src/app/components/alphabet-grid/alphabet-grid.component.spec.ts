@@ -13,6 +13,7 @@ describe('AlphabetGridComponent', () => {
     fixture = TestBed.createComponent(AlphabetGridComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('drawnLetters', []);
+    fixture.componentRef.setInput('removedLetters', []);
     fixture.detectChanges();
   });
 
@@ -47,5 +48,31 @@ describe('AlphabetGridComponent', () => {
     fixture.detectChanges();
     const drawnCells = fixture.nativeElement.querySelectorAll('.letter-cell.drawn');
     expect(drawnCells.length).toBe(3);
+  });
+
+  it('should apply "drawn" class to removed letters', () => {
+    fixture.componentRef.setInput('removedLetters', ['W', 'Y', 'K']);
+    fixture.detectChanges();
+
+    const drawnCells: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll('.letter-cell.drawn');
+    const drawnTexts = Array.from(drawnCells).map(el => el.textContent!.trim());
+
+    expect(drawnTexts).toContain('W');
+    expect(drawnTexts).toContain('Y');
+    expect(drawnTexts).toContain('K');
+  });
+
+  it('should keep actually drawn letters when removedLetters is cleared', () => {
+    fixture.componentRef.setInput('drawnLetters', ['Y']);
+    fixture.componentRef.setInput('removedLetters', ['W', 'Y', 'K']);
+    fixture.detectChanges();
+
+    fixture.componentRef.setInput('removedLetters', []);
+    fixture.detectChanges();
+
+    const drawnCells: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll('.letter-cell.drawn');
+    const drawnTexts = Array.from(drawnCells).map(el => el.textContent!.trim());
+
+    expect(drawnTexts).toEqual(['Y']);
   });
 });

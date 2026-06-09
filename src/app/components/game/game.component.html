@@ -13,7 +13,19 @@
     </button>
   }
 
-  <app-alphabet-grid [drawnLetters]="gameService.drawnLetters()" />
+  <label class="remove-option">
+    <input
+      type="checkbox"
+      [checked]="gameService.removeWyk()"
+      (change)="onToggleRemoveWyk($event)"
+    />
+    Remover letras W, Y e K
+  </label>
+
+  <app-alphabet-grid
+    [drawnLetters]="gameService.drawnLetters()"
+    [removedLetters]="gameService.removeWyk() ? removableLetters : []"
+  />
 
   <button class="btn-reset" (click)="onNewGame()">
     ↺ Novo Jogo
