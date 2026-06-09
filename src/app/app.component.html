@@ -1,1 +1,5 @@
-<p style="color: var(--neon-cyan); font-family: monospace;">STOP — tema ok</p>
+@if (view() === 'home') {
+  <app-home (startGame)="showGame()" />
+} @else {
+  <app-game (goHome)="showHome()" />
+}
