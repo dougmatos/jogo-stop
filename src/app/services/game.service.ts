@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
 export type GamePhase = 'idle' | 'spinning' | 'result';
 
 const ALL_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const REMOVABLE_LETTERS = ['W', 'Y', 'K'];
+export const REMOVABLE_LETTERS = ['W', 'Y', 'K'];
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
