@@ -54,6 +54,16 @@
   background: var(--neon-cyan-bg);
 }
 
+.remove-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
 .btn-reset {
   padding: 7px 18px;
   border: 1px solid rgba(255, 255, 255, 0.15);

@@ -13,6 +13,7 @@ import { AlphabetGridComponent } from '../alphabet-grid/alphabet-grid.component'
 })
 export class GameComponent {
   goHome = output<void>();
+  protected readonly removableLetters = ['W', 'Y', 'K'];
 
   protected gameService = inject(GameService);
   private audioService  = inject(AudioService);
@@ -34,5 +35,10 @@ export class GameComponent {
     this.gameService.resetGame();
     this.audioService.playSwoosh();
     this.goHome.emit();
+  }
+
+  onToggleRemoveWyk(event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.gameService.setRemoveWyk(checked);
   }
 }

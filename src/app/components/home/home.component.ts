@@ -1,4 +1,4 @@
-import { Component, inject, output, computed } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { AudioService } from '../../services/audio.service';
 
@@ -14,8 +14,6 @@ export class HomeComponent {
 
   private gameService = inject(GameService);
   private audioService = inject(AudioService);
-
-  availableCount = computed(() => this.gameService.availableLetters().length);
 
   onNewGame(): void {
     this.audioService.ensureContext();
