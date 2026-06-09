@@ -1,0 +1,22 @@
+<div class="game">
+
+  <app-roulette
+    [phase]="gameService.phase()"
+    [currentLetter]="gameService.currentLetter()"
+  />
+
+  @if (allDrawn()) {
+    <p class="all-drawn-msg">✓ Todas as letras foram sorteadas!</p>
+  } @else {
+    <button class="btn-draw" [disabled]="!canDraw()" (click)="onDraw()">
+      ▶ SORTEAR
+    </button>
+  }
+
+  <app-alphabet-grid [drawnLetters]="gameService.drawnLetters()" />
+
+  <button class="btn-reset" (click)="onNewGame()">
+    ↺ Novo Jogo
+  </button>
+
+</div>
