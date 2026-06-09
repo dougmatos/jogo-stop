@@ -23,3 +23,22 @@ html, body {
   color: white;
   font-family: monospace, monospace;
 }
+
+/* Responsividade */
+@media (max-width: 400px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan-dim);
+  border-radius: 2px;
+}
