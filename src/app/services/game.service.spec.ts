@@ -31,8 +31,14 @@ describe('GameService', () => {
     expect(service.availableLetters().length).toBe(25);
   });
 
-  it('drawLetter should add one letter to drawnLetters', () => {
+  it('drawLetter should NOT add to drawnLetters yet (only after animation)', () => {
     service.drawLetter();
+    expect(service.drawnLetters().length).toBe(0);
+  });
+
+  it('onAnimationComplete should add letter to drawnLetters', () => {
+    service.drawLetter();
+    service.onAnimationComplete();
     expect(service.drawnLetters().length).toBe(1);
   });
 

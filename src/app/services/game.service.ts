@@ -27,13 +27,17 @@ export class GameService {
     const letter = available[idx];
 
     this._availableLetters.set(available.filter((_, i) => i !== idx));
-    this._drawnLetters.update(drawn => [...drawn, letter]);
     this._currentLetter.set(letter);
     this._phase.set('spinning');
   }
 
   onAnimationComplete(): void {
     if (this._phase() !== 'spinning') return;
+    // Marca a letra como sorteada apenas após a animação terminar
+    const letter = this._currentLetter();
+    if (letter) {
+      this._drawnLetters.update(drawn => [...drawn, letter]);
+    }
     this._phase.set('result');
     this.resultTimer = setTimeout(() => {
       this._phase.set('idle');
