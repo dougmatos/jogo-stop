@@ -1,0 +1,85 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.logo-wrapper {
+  filter: drop-shadow(0 0 16px #00f5ff55);
+}
+
+.outer-ring {
+  transform-origin: 65px 65px;
+  animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.logo {
+  animation: pulse-logo 3s ease-in-out infinite;
+}
+
+@keyframes pulse-logo {
+  0%, 100% { filter: drop-shadow(0 0 8px #00f5ff44); }
+  50%       { filter: drop-shadow(0 0 20px #00f5ffaa); }
+}
+
+.title-block {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.4rem;
+  letter-spacing: 10px;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  font-family: monospace;
+}
+
+.subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 4px;
+}
+
+.btn-new-game {
+  padding: 14px 40px;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--neon-cyan);
+  font-family: monospace;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  cursor: pointer;
+  text-shadow: var(--glow-cyan);
+  box-shadow: var(--glow-cyan);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-new-game:hover {
+  background: var(--neon-cyan-bg);
+  box-shadow: 0 0 20px #00f5ffaa;
+}
+
+.btn-new-game:active {
+  transform: scale(0.97);
+}
+
+.count-hint {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.18);
+}

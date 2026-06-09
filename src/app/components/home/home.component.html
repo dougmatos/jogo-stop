@@ -1,0 +1,36 @@
+<div class="home">
+  <div class="logo-wrapper">
+    <svg class="logo" width="130" height="130" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-logo">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <circle class="outer-ring" cx="65" cy="65" r="60"
+              fill="none" stroke="#00f5ff" stroke-width="1.5"
+              stroke-dasharray="8 4" opacity="0.4"/>
+      <circle cx="65" cy="65" r="48"
+              fill="#080814" stroke="#bf00ff" stroke-width="2"
+              filter="url(#glow-logo)"/>
+      <text x="65" y="76" text-anchor="middle"
+            font-size="40" font-weight="bold"
+            fill="#00f5ff" font-family="monospace"
+            filter="url(#glow-logo)">S!</text>
+    </svg>
+  </div>
+
+  <div class="title-block">
+    <h1 class="title">STOP</h1>
+    <p class="subtitle">SORTEADOR DE LETRAS</p>
+  </div>
+
+  <button class="btn-new-game" (click)="onNewGame()">
+    NOVO JOGO
+  </button>
+
+  <p class="count-hint">{{ availableCount() }} LETRAS DISPONÍVEIS</p>
+</div>

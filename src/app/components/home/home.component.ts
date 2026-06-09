@@ -1,11 +1,26 @@
-import { Component, output } from '@angular/core';
+import { Component, inject, output, computed } from '@angular/core';
+import { GameService } from '../../services/game.service';
+import { AudioService } from '../../services/audio.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [],
-  template: `<p style="color:var(--neon-cyan); font-family:monospace; letter-spacing:3px;">HOME STUB</p>`
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
 export class HomeComponent {
   startGame = output<void>();
+
+  private gameService = inject(GameService);
+  private audioService = inject(AudioService);
+
+  availableCount = computed(() => this.gameService.availableLetters().length);
+
+  onNewGame(): void {
+    this.audioService.ensureContext();
+    this.gameService.resetGame();
+    this.audioService.playSwoosh();
+    this.startGame.emit();
+  }
 }
